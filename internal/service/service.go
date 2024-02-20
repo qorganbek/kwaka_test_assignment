@@ -5,6 +5,8 @@ import (
 	"github.com/qorganbek/kwaka_test_assignment/internal/repository"
 )
 
+//go:generate mockgen -source=service.go -destination=mocks/mock.go
+
 type Weather interface {
 	CreateWeather(location string) (entity.Weather, error)
 	GetWeather(location string) (entity.Weather, error)
