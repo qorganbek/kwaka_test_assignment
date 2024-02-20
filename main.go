@@ -3,19 +3,20 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"kwaka_test/internal/entity"
 	"net/http"
 )
 
 // Weather represents the weather data structure
-type Weather struct {
-	Location    string  `json:"name"`
-	Temperature float64 `json:"temp"`
-	Description string  `json:"description"`
-	FeelsLike   float64 `json:"feels_like"`
-}
+//type Weather struct {
+//	Location    string  `json:"name"`
+//	Temperature float64 `json:"temp"`
+//	Description string  `json:"description"`
+//	FeelsLike   float64 `json:"feels_like"`
+//}
 
 // GetWeather retrieves weather data from an API
-func GetWeather(city string) (Weather, error) {
+func GetWeather(city string) (entity.Weather, error) {
 	// Replace "YOUR_API_KEY" with your actual API key
 	apiKey := "b7ffe634c060fb5ad1da59af78646989"
 	apiUrl := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=metric", city, apiKey)
@@ -23,7 +24,7 @@ func GetWeather(city string) (Weather, error) {
 	// Send GET request to the API
 	response, err := http.Get(apiUrl)
 	if err != nil {
-		return Weather{}, err
+		return entity.Weather{}, err
 	}
 	defer response.Body.Close()
 
@@ -38,12 +39,13 @@ func GetWeather(city string) (Weather, error) {
 		} `json:"weather"`
 		Name string `json:"name"`
 	}
+
 	if err := json.NewDecoder(response.Body).Decode(&weatherData); err != nil {
-		return Weather{}, err
+		return entity.Weather{}, err
 	}
 	fmt.Println(weatherData)
 	// Populate Weather struct
-	weather := Weather{
+	weather := entity.Weather{
 		Location:    weatherData.Name,
 		Temperature: weatherData.Main.Temp,
 		Description: weatherData.Weather[0].Description,

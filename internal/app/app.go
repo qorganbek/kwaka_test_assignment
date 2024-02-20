@@ -2,9 +2,12 @@ package app
 
 import (
 	"fmt"
+	_ "github.com/lib/pq"
 	"kwaka_test/internal/config"
+	"kwaka_test/internal/handler"
 	"kwaka_test/internal/repository"
 	"kwaka_test/internal/repository/pgrepo"
+	"kwaka_test/internal/service"
 	"kwaka_test/pkg/http_server"
 	"log"
 	"os"
@@ -29,11 +32,10 @@ func Run(cfg *config.Config) error {
 	}
 
 	repos := repository.NewRepository(db)
-	// services =
-	// handlers =
-	fmt.Println(repos)
+	services := service.NewService(repos)
+	handlers := handler.New(services)
 
-	server := http_server.New(nil,
+	server := http_server.New(handlers.InitRouter(),
 		http_server.WithPort(cfg.HTTP.Port),
 		http_server.WithReadTimeout(cfg.HTTP.ReadTimeout),
 		http_server.WithWriteTimeout(cfg.HTTP.WriteTimeout),

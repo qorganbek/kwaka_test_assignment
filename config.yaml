@@ -10,4 +10,3 @@ db:
   port: "5432"
   db_name: "kwaka_test"
   username: "postgres"
-  password: "Dimash2003"

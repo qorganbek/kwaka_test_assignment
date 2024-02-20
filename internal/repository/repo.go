@@ -5,18 +5,18 @@ import (
 	"kwaka_test/internal/entity"
 )
 
-type WeatherRepository interface {
-	CreateWeather(weather entity.Weather) (int, error)
+type Weather interface {
+	CreateWeather(location string) (entity.Weather, error)
 	GetWeather(location string) (entity.Weather, error)
 	UpdateWeather(location string, input entity.UpdateWeather) error
 }
 
 type Repository struct {
-	WeatherRepository
+	Weather
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
-		WeatherRepository: NewWeatherPostgres(db),
+		Weather: NewWeatherPostgres(db),
 	}
 }

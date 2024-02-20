@@ -2,6 +2,7 @@ package config
 
 import (
 	"github.com/ilyakaznacheev/cleanenv"
+	"github.com/joho/godotenv"
 	"time"
 )
 
@@ -23,7 +24,7 @@ type DBConfig struct {
 	Port     string `yaml:"port"`
 	Username string `yaml:"username"`
 	DBName   string `yaml:"db_name"`
-	Password string `yaml:"password"`
+	Password string `env:"DB_PASSWORD"`
 }
 
 func InitConfig(path string) (*Config, error) {
@@ -32,6 +33,10 @@ func InitConfig(path string) (*Config, error) {
 	err := cleanenv.ReadConfig(path, cfg)
 
 	if err != nil {
+		return nil, err
+	}
+
+	if err := godotenv.Load(); err != nil {
 		return nil, err
 	}
 
