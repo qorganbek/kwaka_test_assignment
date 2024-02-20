@@ -1,8 +1,8 @@
 package service
 
 import (
-	"kwaka_test/internal/entity"
-	"kwaka_test/internal/repository"
+	"github.com/qorganbek/kwaka_test_assignment/internal/entity"
+	"github.com/qorganbek/kwaka_test_assignment/internal/repository"
 )
 
 type Weather interface {

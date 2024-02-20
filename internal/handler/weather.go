@@ -2,7 +2,7 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
-	"kwaka_test/internal/entity"
+	"github.com/qorganbek/kwaka_test_assignment/internal/entity"
 	"net/http"
 )
 
@@ -26,7 +26,6 @@ func (h *Handler) updateWeather(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{"message": "Data is updated!"})
 		return
 	}
-
 	err = h.service.UpdateWeather(location, entity.UpdateWeather{
 		Temperature: weather.Temperature,
 		Description: weather.Description,

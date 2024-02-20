@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"kwaka_test/internal/app"
-	"kwaka_test/internal/config"
+	"github.com/qorganbek/kwaka_test_assignment/internal/app"
+	"github.com/qorganbek/kwaka_test_assignment/internal/config"
 )
 
 func main() {

@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"kwaka_test/internal/service"
+	"github.com/qorganbek/kwaka_test_assignment/internal/service"
 )
 
 type Handler struct {

@@ -2,7 +2,7 @@ package repository
 
 import (
 	"github.com/jmoiron/sqlx"
-	"kwaka_test/internal/entity"
+	"github.com/qorganbek/kwaka_test_assignment/internal/entity"
 )
 
 type Weather interface {

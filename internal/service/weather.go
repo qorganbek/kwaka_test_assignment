@@ -1,6 +1,6 @@
 package service
 
-import "kwaka_test/internal/entity"
+import "github.com/qorganbek/kwaka_test_assignment/internal/entity"
 
 func (w WeatherService) GetWeather(location string) (entity.Weather, error) {
 	return w.repos.GetWeather(location)

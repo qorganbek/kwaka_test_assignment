@@ -1,4 +1,4 @@
-module kwaka_test
+module github.com/qorganbek/kwaka_test_assignment
 
 go 1.22
 

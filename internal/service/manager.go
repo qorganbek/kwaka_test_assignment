@@ -1,7 +1,7 @@
 package service
 
 import (
-	"kwaka_test/internal/repository"
+	"github.com/qorganbek/kwaka_test_assignment/internal/repository"
 )
 
 type WeatherService struct {

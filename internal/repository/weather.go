@@ -2,9 +2,9 @@ package repository
 
 import (
 	"fmt"
-	"kwaka_test/internal/entity"
-	"kwaka_test/internal/repository/pgrepo"
-	"kwaka_test/pkg/util"
+	"github.com/qorganbek/kwaka_test_assignment/internal/entity"
+	"github.com/qorganbek/kwaka_test_assignment/internal/repository/pgrepo"
+	"github.com/qorganbek/kwaka_test_assignment/pkg/util"
 	"log"
 )
 

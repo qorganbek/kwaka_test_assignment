@@ -3,7 +3,7 @@ package util
 import (
 	"encoding/json"
 	"fmt"
-	"kwaka_test/internal/entity"
+	"github.com/qorganbek/kwaka_test_assignment/internal/entity"
 	"net/http"
 	"os"
 )
