@@ -18,7 +18,6 @@ func GetWeather(city string) (entity.Weather, error) {
 	}
 	defer response.Body.Close()
 
-	// Decode JSON response
 	var weatherData struct {
 		Main struct {
 			Temp      float64 `json:"temp"`
@@ -33,7 +32,6 @@ func GetWeather(city string) (entity.Weather, error) {
 	if err := json.NewDecoder(response.Body).Decode(&weatherData); err != nil {
 		return entity.Weather{}, err
 	}
-	fmt.Println(weatherData)
 
 	weather := entity.Weather{
 		Location:    weatherData.Name,

@@ -10,7 +10,6 @@ import (
 
 func (w WeatherPostgres) CreateWeather(location string) (entity.Weather, error) {
 	// create table if not exist
-	fmt.Println("Ол создать райы на кірді")
 	tableCreationQuery := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
 													id          SERIAL PRIMARY KEY,
 													location    VARCHAR(255) unique,
@@ -38,16 +37,13 @@ func (w WeatherPostgres) CreateWeather(location string) (entity.Weather, error) 
 }
 
 func (w WeatherPostgres) GetWeather(location string) (entity.Weather, error) {
-	fmt.Println("Ол ГетАуа райы на кірді")
 	var weather entity.Weather
 	query := fmt.Sprintf("SELECT * FROM %s WHERE location=$1", pgrepo.WeatherTable)
 	err := w.db.Get(&weather, query, location)
-	fmt.Println(weather, location)
 	return weather, err
 }
 
 func (w WeatherPostgres) UpdateWeather(location string, input entity.UpdateWeather) error {
-	fmt.Println("Ол апдейт райы на кірді")
 	query := fmt.Sprintf("UPDATE %s SET temp=$1, description=$2, feels_like=$3 WHERE location=$4", pgrepo.WeatherTable)
 	_, err := w.db.Exec(query, input.Temperature, input.Description, input.FeelsLike, location)
 	if err != nil {

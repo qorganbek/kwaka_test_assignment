@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"kwaka_test/internal/entity"
 	"net/http"
@@ -22,10 +21,9 @@ func (h *Handler) updateWeather(ctx *gin.Context) {
 	location := ctx.Param("location")
 
 	weather, err := h.service.GetWeather(location)
-	fmt.Println("Weather from update ", weather)
 	if err != nil {
 		weather, err = h.service.CreateWeather(location)
-		ctx.JSON(http.StatusOK, weather)
+		ctx.JSON(http.StatusOK, gin.H{"message": "Data is updated!"})
 		return
 	}
 
@@ -40,5 +38,5 @@ func (h *Handler) updateWeather(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, weather)
+	ctx.JSON(http.StatusOK, gin.H{"message": "Data is updated!"})
 }
